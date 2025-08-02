@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-nunito: "Nunito Sans", sans-serif;
+  --color-main: #0e0e0e;
+  --color-brand: #bbcb2f;
+  --color-tertiary: #f9dc0a;
+  --color-lRose: #d51b74;
+}
+
+@layer base {
+  body {
+    @apply text-main bg-gray-100;
+    font-family: var(--font-nunito);
+    font-size: 16px;
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ✅ Add scrollbar-hide utility */
+@utility scrollbar-hide {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE 10+ */
+  scrollbar-width: none; /* Firefox */
+}
