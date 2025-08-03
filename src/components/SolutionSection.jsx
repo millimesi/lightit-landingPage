@@ -235,9 +235,14 @@ const SolutionSection = () => {
 
                     {/* Action Button */}
                     <div className="pt-2">
-                      <button className="px-6 py-3 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#bbcb2f]/30 hover:scale-105">
+                      <a
+                        href="https://lightit.app/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-6 py-3 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#bbcb2f]/30 hover:scale-105 inline-block text-center"
+                      >
                         Visit {service.title}
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>

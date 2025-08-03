@@ -1,32 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 
 const ProblemSection = () => {
-  const sectionRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
   const [activeCard, setActiveCard] = useState(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
 
   const problems = [
     {
@@ -162,10 +137,7 @@ const ProblemSection = () => {
         }
       `}</style>
 
-      <section
-        ref={sectionRef}
-        className="relative py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
-      >
+      <section className="relative py-10 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#bbcb2f] rounded-full blur-3xl animate-float" />
@@ -184,36 +156,20 @@ const ProblemSection = () => {
         <div className="container mx-auto px-6 relative z-10">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <div
-              className={`inline-block mb-4 ${
-                isVisible ? "animate-scaleIn" : "opacity-0"
-              }`}
-            >
+            <div className="inline-block mb-4 animate-scaleIn">
               <span className="px-6 py-3 bg-gradient-to-r from-[#bbcb2f]/20 to-[#bbcb2f]/10 text-[#bbcb2f] text-sm font-bold uppercase tracking-wider rounded-full border border-[#bbcb2f]/30 backdrop-blur-sm">
                 Current Challenges
               </span>
             </div>
 
-            <h2
-              className={`text-3xl md:text-2xl lg:text-4xl font-bold text-white mb-2 leading-tight ${
-                isVisible ? "animate-slideUp delay-200" : "opacity-0"
-              }`}
-            >
+            <h2 className="text-3xl md:text-2xl lg:text-4xl font-bold text-white mb-2 leading-tight animate-slideUp delay-200">
               The{" "}
               <span className="text-[#bbcb2f] drop-shadow-lg">Problems</span>
             </h2>
 
-            <div
-              className={`w-24 h-1 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] mx-auto mb-3 rounded-full ${
-                isVisible ? "animate-scaleIn delay-300" : "opacity-0"
-              }`}
-            />
+            <div className="w-24 h-1 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] mx-auto mb-3 rounded-full animate-scaleIn delay-300" />
 
-            <p
-              className={`text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed ${
-                isVisible ? "animate-fadeIn delay-400" : "opacity-0"
-              }`}
-            >
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fadeIn delay-400">
               Understanding the challenges for meaningful solutions.
             </p>
           </div>
@@ -223,9 +179,7 @@ const ProblemSection = () => {
             {problems.map((problem, index) => (
               <div
                 key={problem.id}
-                className={`group relative ${
-                  isVisible ? "animate-slideUp" : "opacity-0"
-                }`}
+                className="group relative animate-slideUp"
                 style={{ animationDelay: `${(index + 1) * 200}ms` }}
                 onMouseEnter={() => setActiveCard(problem.id)}
                 onMouseLeave={() => setActiveCard(null)}
@@ -309,11 +263,7 @@ const ProblemSection = () => {
           </div>
 
           {/* Bottom CTA */}
-          <div
-            className={`text-center mt-16 ${
-              isVisible ? "animate-fadeIn delay-600" : "opacity-0"
-            }`}
-          >
+          <div className="text-center mt-16 animate-fadeIn delay-600">
             <div className="inline-flex items-center space-x-4 px-8 py-4 bg-gradient-to-r from-gray-800/80 to-gray-700/80 backdrop-blur-sm rounded-full border border-gray-600/50">
               <span className="text-gray-300 font-medium">
                 These challenges demand innovative solutions

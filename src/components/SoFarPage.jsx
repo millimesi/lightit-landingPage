@@ -179,7 +179,7 @@ const ProgressSection = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="space-y-6">
+                <div className="space-y-2">
                   {/* Header */}
                   <div className="flex items-start justify-between">
                     <div className="space-y-2">
@@ -201,7 +201,7 @@ const ProgressSection = () => {
                   </p>
 
                   {/* Image Slider */}
-                  <div className="mt-8">
+                  <div className="mt-2">
                     <ImageSlider
                       images={achievement.images}
                       achievementId={achievement.id}
@@ -209,7 +209,7 @@ const ProgressSection = () => {
                   </div>
 
                   {/* Achievement Status */}
-                  <div className="flex items-center justify-between pt-4">
+                  <div className="flex items-center justify-between pt-2">
                     <div className="flex items-center space-x-2 text-[#bbcb2f]">
                       <svg
                         className="w-5 h-5"

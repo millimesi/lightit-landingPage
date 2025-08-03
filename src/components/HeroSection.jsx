@@ -233,12 +233,13 @@ const HeroSection = () => {
       }}
     >
       {/* Navigation Dots & Controls */}
-      <div className="absolute bottom-8 right-8 z-30 flex flex-col items-end space-y-2">
-        <div className="flex flex-col items-center space-y-3">
-          <div className="flex items-center space-x-3">
+      <div className="absolute bottom-4 right-4 z-30 flex flex-col items-end space-y-2 sm:bottom-8 sm:right-8">
+        <div className="flex flex-col items-center space-y-2 sm:space-y-3">
+          <div className="flex items-center space-x-2 sm:space-x-3">
             {/* Prev Button */}
             <button
-              className="p-2 rounded-full bg-[#bbcb2f]/80 hover:bg-[#bbcb2f] shadow-lg transition-all duration-300 flex items-center justify-center"
+              className="p-1 sm:p-2 rounded-full bg-[#bbcb2f]/80 hover:bg-[#bbcb2f] shadow-lg transition-all duration-300 flex items-center justify-center"
+              style={{ width: "32px", height: "32px" }}
               onClick={(e) => {
                 e.stopPropagation();
                 setIsPaused(true);
@@ -248,14 +249,15 @@ const HeroSection = () => {
               }}
               aria-label="Previous Slide"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="11" fill="#bbcb2f" />
                 <polygon points="14,8 8,12 14,16" fill="#fff" />
               </svg>
             </button>
             {/* Pause/Play Button */}
             <button
-              className="p-2 rounded-full bg-[#bbcb2f]/80 hover:bg-[#bbcb2f] shadow-lg transition-all duration-300 flex items-center justify-center"
+              className="p-1 sm:p-2 rounded-full bg-[#bbcb2f]/80 hover:bg-[#bbcb2f] shadow-lg transition-all duration-300 flex items-center justify-center"
+              style={{ width: "32px", height: "32px" }}
               onClick={(e) => {
                 e.stopPropagation();
                 setIsPaused((prev) => !prev);
@@ -263,12 +265,12 @@ const HeroSection = () => {
               aria-label={isPaused ? "Resume slider" : "Pause slider"}
             >
               {isPaused ? (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="11" fill="#bbcb2f" />
                   <polygon points="10,8 16,12 10,16" fill="#fff" />
                 </svg>
               ) : (
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="11" fill="#bbcb2f" />
                   <rect x="8" y="8" width="2.5" height="8" rx="1" fill="#fff" />
                   <rect
@@ -284,7 +286,8 @@ const HeroSection = () => {
             </button>
             {/* Next Button */}
             <button
-              className="p-2 rounded-full bg-[#bbcb2f]/80 hover:bg-[#bbcb2f] shadow-lg transition-all duration-300 flex items-center justify-center"
+              className="p-1 sm:p-2 rounded-full bg-[#bbcb2f]/80 hover:bg-[#bbcb2f] shadow-lg transition-all duration-300 flex items-center justify-center"
+              style={{ width: "32px", height: "32px" }}
               onClick={(e) => {
                 e.stopPropagation();
                 setIsPaused(true);
@@ -292,17 +295,17 @@ const HeroSection = () => {
               }}
               aria-label="Next Slide"
             >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <circle cx="12" cy="12" r="11" fill="#bbcb2f" />
                 <polygon points="10,8 16,12 10,16" fill="#fff" />
               </svg>
             </button>
           </div>
-          <div className="flex space-x-3 mt-2 justify-center">
+          <div className="flex space-x-2 sm:space-x-3 mt-1 sm:mt-2 justify-center">
             {slides.map((_, index) => (
               <div
                 key={index}
-                className={`w-3 h-3 rounded-full transition-all duration-500 ${
+                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-500 ${
                   index === currentSlide
                     ? "bg-[#bbcb2f] shadow-lg shadow-[#bbcb2f]/50 scale-125"
                     : "bg-white/40 hover:bg-white/60"
@@ -323,7 +326,7 @@ const HeroSection = () => {
 
       <div
         ref={slideRef}
-        className="relative w-screen h-[95vh] overflow-hidden bg-[#bbcb2f]"
+        className="relative w-screen h-[60vh] sm:h-[95vh] overflow-hidden bg-[#bbcb2f]"
       >
         {slides.map((slide, idx) => (
           <div
@@ -345,29 +348,30 @@ const HeroSection = () => {
             <div
               className={`absolute ${
                 slide.position === "left"
-                  ? "top-[calc(20%+5rem)] left-[8%] w-[45%] text-left"
+                  ? "top-[calc(15%+2rem)] left-[4%] w-[90vw] max-w-[420px] sm:top-[calc(20%+5rem)] sm:left-[8%] sm:w-[45%] sm:max-w-none text-left"
                   : slide.position === "right"
-                  ? "top-[calc(20%+5rem)] right-[8%] w-[45%] text-right"
-                  : "bottom-[10%] left-1/2 -translate-x-1/2 w-[60%] text-center"
-              } text-white p-6 bg-black/5 rounded-lg shadow-lg z-10`}
+                  ? "top-[calc(15%+2rem)] right-[4%] w-[90vw] max-w-[420px] sm:top-[calc(20%+5rem)] sm:right-[8%] sm:w-[45%] sm:max-w-none text-right"
+                  : "bottom-[8%] left-1/2 -translate-x-1/2 w-[95vw] max-w-[480px] sm:bottom-[10%] sm:w-[60%] sm:max-w-none text-center"
+              } text-white p-3 sm:p-6 bg-black/5 rounded-lg shadow-lg z-10`}
             >
-              <div className="mb-3">
+              <div className="mb-2 sm:mb-3">
                 {slide.badge ? (
                   <span
-                    className={`inline-block px-3 py-1 ${slide.badgeColor} text-xs font-semibold rounded-full border animate-slideIn`}
+                    className={`inline-block px-2 py-1 sm:px-3 sm:py-1 ${slide.badgeColor} text-xs font-semibold rounded-full border animate-slideIn`}
                   >
                     {slide?.badge}
                   </span>
                 ) : null}
               </div>
-              <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4 animate-slideIn delay-200">
+              <h1 className="text-xl sm:text-3xl md:text-4xl font-bold leading-tight mb-2 sm:mb-4 animate-slideIn delay-200">
                 {slide.title}
               </h1>
-              <p className="text-base text-white/80 mb-6 leading-relaxed animate-slideIn delay-300">
+              <p className="text-sm sm:text-base text-white/80 mb-3 sm:mb-6 leading-relaxed animate-slideIn delay-300">
                 {slide.description}
               </p>
+              {/* Hide Learn More on small screens */}
               <div
-                className={`flex flex-col sm:flex-row gap-3 ${
+                className={`${
                   slide.position === "right"
                     ? "justify-end"
                     : slide.position === "center"
@@ -375,30 +379,24 @@ const HeroSection = () => {
                     : ""
                 } animate-slideIn delay-400`}
               >
-                {slide.cta.map((btn, bidx) =>
-                  btn.text === "Learn More" ? (
-                    <button
-                      key={bidx}
-                      className="cta-btn px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-[#bbcb2f] transition-all duration-300 text-sm w-auto min-w-0"
-                      style={{ width: "auto", minWidth: 0 }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleLearnMoreClick();
-                      }}
-                    >
-                      {btn.text}
-                    </button>
-                  ) : (
-                    <button
-                      key={bidx}
-                      className="cta-btn px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-[#bbcb2f] transition-all duration-300 text-sm w-auto min-w-0"
-                      style={{ width: "auto", minWidth: 0 }}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {btn.text}
-                    </button>
-                  )
-                )}
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                  {slide.cta.map(
+                    (btn, bidx) =>
+                      btn.text === "Learn More" && (
+                        <button
+                          key={bidx}
+                          className="cta-btn px-4 py-2 sm:px-6 sm:py-3 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-[#bbcb2f] transition-all duration-300 text-xs sm:text-sm w-auto min-w-0 hidden xs:hidden sm:inline-block"
+                          style={{ width: "auto", minWidth: 0 }}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleLearnMoreClick();
+                          }}
+                        >
+                          {btn.text}
+                        </button>
+                      )
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -406,6 +404,9 @@ const HeroSection = () => {
       </div>
 
       <style>{`
+        @media (max-width: 640px) {
+          .cta-btn { display: none !important; }
+        }
         @keyframes fadeIn {
           from {
             opacity: 0;
