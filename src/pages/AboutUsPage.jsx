@@ -235,9 +235,11 @@ const AboutUsPage = () => (
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-lg shadow-[#bbcb2f]/30">
-              Join Our Mission
-            </button>
+            <Link to="/contactUs">
+              <button className="px-8 py-4 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-bold rounded-full hover:scale-105 transition-transform duration-300 shadow-lg shadow-[#bbcb2f]/30">
+                Join Our Mission
+              </button>
+            </Link>
             <Link to="/">
               <button className="px-8 py-4 border-2 border-[#bbcb2f]/50 text-[#bbcb2f] font-semibold rounded-full hover:bg-[#bbcb2f]/10 transition-all duration-300">
                 Learn More

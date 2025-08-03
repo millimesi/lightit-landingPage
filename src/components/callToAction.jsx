@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const CallToActionSection = () => {
   const [hoveredRole, setHoveredRole] = useState(null);
@@ -139,25 +140,27 @@ const CallToActionSection = () => {
 
           {/* Main CTA Button */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="group relative px-12 py-6 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-bold text-xl rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#bbcb2f]/40 hover:scale-110">
-              <span className="relative z-10 flex items-center space-x-3">
-                <span>Become a Partner</span>
-                <svg
-                  className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </span>
-              <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
-            </button>
+            <Link to="/contactUs">
+              <button className="group relative px-12 py-6 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-bold text-xl rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#bbcb2f]/40 hover:scale-110">
+                <span className="relative z-10 flex items-center space-x-3">
+                  <span>Become a Partner</span>
+                  <svg
+                    className="w-6 h-6 group-hover:translate-x-1 transition-transform duration-300"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                </span>
+                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500" />
+              </button>
+            </Link>
           </div>
 
           {/* Contact Information */}
@@ -180,7 +183,9 @@ const CallToActionSection = () => {
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
-                <span className="font-semibold">millionmesi1@gmail.com</span>
+                <Link to="/contactUs">
+                  <span className="font-semibold">Write us an Email</span>
+                </Link>
               </div>
 
               <div className="hidden sm:block w-px h-6 bg-gray-600" />
@@ -197,34 +202,38 @@ const CallToActionSection = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="font-semibold">Schedule a Meeting</span>
+                <Link to="/contactUs">
+                  <span className="font-semibold">Schedule a Meeting</span>
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Decorative Element */}
-        <div className="text-center mt-16">
-          <div className="inline-flex items-center space-x-4 px-8 py-4 bg-[#bbcb2f]/10 backdrop-blur-sm rounded-full border border-[#bbcb2f]/30">
-            <div className="flex -space-x-2">
-              <div className="w-8 h-8 bg-[#bbcb2f] rounded-full border-2 border-gray-800 flex items-center justify-center text-black font-bold text-sm">
-                1
+        <Link to="/contactUs">
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center space-x-4 px-8 py-4 bg-[#bbcb2f]/10 backdrop-blur-sm rounded-full border border-[#bbcb2f]/30">
+              <div className="flex -space-x-2">
+                <div className="w-8 h-8 bg-[#bbcb2f] rounded-full border-2 border-gray-800 flex items-center justify-center text-black font-bold text-sm">
+                  1
+                </div>
+                <div className="w-8 h-8 bg-[#bbcb2f] rounded-full border-2 border-gray-800 flex items-center justify-center text-black font-bold text-sm">
+                  2
+                </div>
+                <div className="w-8 h-8 bg-[#bbcb2f] rounded-full border-2 border-gray-800 flex items-center justify-center text-black font-bold text-sm">
+                  3
+                </div>
+                <div className="w-8 h-8 bg-[#bbcb2f]/50 rounded-full border-2 border-gray-800 flex items-center justify-center text-white font-bold text-sm">
+                  +
+                </div>
               </div>
-              <div className="w-8 h-8 bg-[#bbcb2f] rounded-full border-2 border-gray-800 flex items-center justify-center text-black font-bold text-sm">
-                2
-              </div>
-              <div className="w-8 h-8 bg-[#bbcb2f] rounded-full border-2 border-gray-800 flex items-center justify-center text-black font-bold text-sm">
-                3
-              </div>
-              <div className="w-8 h-8 bg-[#bbcb2f]/50 rounded-full border-2 border-gray-800 flex items-center justify-center text-white font-bold text-sm">
-                +
-              </div>
+              <span className="text-[#bbcb2f] font-semibold">
+                Join Partners Already Making a Difference
+              </span>
             </div>
-            <span className="text-[#bbcb2f] font-semibold">
-              Join Partners Already Making a Difference
-            </span>
           </div>
-        </div>
+        </Link>
       </div>
     </section>
   );

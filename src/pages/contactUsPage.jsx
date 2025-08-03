@@ -1,4 +1,26 @@
 import React, { useState } from "react";
+import emailjs from "emailjs-com";
+import * as yup from "yup";
+
+// Validation schema using yup
+const schema = yup.object().shape({
+  fullName: yup
+    .string()
+    .matches(/^[A-Za-z\s]+$/, "Name must contain only letters and spaces.")
+    .required("Full name is required."),
+  phone: yup.string().required("Phone number is required."),
+  email: yup
+    .string()
+    .email("Please enter a valid email address.")
+    .required("Email is required."),
+  message: yup
+    .string()
+    .max(500, "Message must be less than 500 characters.")
+    .test("max-words", "Message must be less than 100 words.", (value) =>
+      value ? value.split(/\s+/).length <= 100 : true
+    )
+    .required("Message is required."),
+});
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +29,7 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [errors, setErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -16,25 +39,50 @@ const ContactForm = () => {
       ...prev,
       [name]: value,
     }));
+    setErrors((prev) => ({
+      ...prev,
+      [name]: undefined,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    console.log("Contact Form Submitted:", formData);
+    try {
+      await schema.validate(formData, { abortEarly: false });
+      await emailjs.send(
+        "service_0w0ra6p",
+        "template_hlryywd",
+        {
+          fullName: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.message,
+        },
+        "8HhvhfluPa46lmE_x"
+      );
 
-    // Show success message
-    setShowSuccess(true);
-
-    // Reset form
-    setFormData({
-      fullName: "",
-      phone: "",
-      email: "",
-      message: "",
-    });
+      setShowSuccess(true);
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        message: "",
+      });
+      setErrors({});
+    } catch (err) {
+      if (err.name === "ValidationError") {
+        const fieldErrors = {};
+        err.inner.forEach((error) => {
+          fieldErrors[error.path] = error.message;
+        });
+        setErrors(fieldErrors);
+      } else {
+        alert("Failed to send message. Please try again.");
+        console.error("EmailJS error:", err);
+      }
+    }
 
     setIsSubmitting(false);
 
@@ -110,9 +158,16 @@ const ContactForm = () => {
                       value={formData.fullName}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300"
+                      className={`w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300 ${
+                        errors.fullName ? "border-red-500" : ""
+                      }`}
                       placeholder="Enter your full name"
                     />
+                    {errors.fullName && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.fullName}
+                      </p>
+                    )}
                   </div>
 
                   {/* Phone Number */}
@@ -130,9 +185,16 @@ const ContactForm = () => {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300"
+                      className={`w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300 ${
+                        errors.phone ? "border-red-500" : ""
+                      }`}
                       placeholder="+251 911 123 456"
                     />
+                    {errors.phone && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.phone}
+                      </p>
+                    )}
                   </div>
 
                   {/* Email */}
@@ -150,9 +212,16 @@ const ContactForm = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300"
+                      className={`w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300 ${
+                        errors.email ? "border-red-500" : ""
+                      }`}
                       placeholder="your.email@example.com"
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.email}
+                      </p>
+                    )}
                   </div>
 
                   {/* Message */}
@@ -170,9 +239,16 @@ const ContactForm = () => {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300 resize-none"
+                      className={`w-full px-4 py-3 bg-gray-800/50 border border-gray-600/50 rounded-xl text-white placeholder-gray-400 focus:border-brand focus:ring-2 focus:ring-brand/20 focus:outline-none transition-all duration-300 resize-none ${
+                        errors.message ? "border-red-500" : ""
+                      }`}
                       placeholder="Tell us about your interest in Light It, questions about our programs, or how we can work together..."
                     />
+                    {errors.message && (
+                      <p className="text-red-500 text-sm mt-1">
+                        {errors.message}
+                      </p>
+                    )}
                   </div>
 
                   {/* Submit Button */}
