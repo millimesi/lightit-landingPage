@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import MainLightitlogo from "../assets/MainLightitlogo.svg";
-import HeroSection from "./HeroSection";
 
 const NavBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,32 +11,42 @@ const NavBar = () => {
         <div className="flex justify-between items-center h-20">
           <div className="flex items-center">
             <div className="flex items-center">
-              <img
-                src={MainLightitlogo}
-                alt="Lightit Logo"
-                className="h-16 w-auto max-w-[120px]"
-                style={{
-                  display: "block",
-                  filter: "drop-shadow(0 4px 8px #fff)",
-                }}
-              />
+              <Link to="/">
+                <img
+                  src={MainLightitlogo}
+                  alt="Lightit Logo"
+                  className="h-16 w-auto max-w-[120px] cursor-pointer"
+                  style={{
+                    display: "block",
+                    filter: "drop-shadow(0 2px 8px #fff)",
+                  }}
+                />
+              </Link>
             </div>
           </div>
           <div className="hidden md:flex space-x-8">
-            <a
-              href="#about"
+            <Link
+              to="/"
+              className="text-white hover:text-brand transition-colors duration-300 font-medium text-lg relative group"
+            >
+              Home
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link
+              to="/about"
               className="text-white hover:text-brand transition-colors duration-300 font-medium text-lg relative group"
             >
               About Us
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a
-              href="#contact"
+            </Link>
+
+            <Link
+              to="/contactUs"
               className="text-white hover:text-brand transition-colors duration-300 font-medium text-lg relative group"
             >
               Contact Us
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full"></span>
-            </a>
+            </Link>
           </div>
           <div className="md:hidden">
             <button
@@ -69,18 +79,27 @@ const NavBar = () => {
         } bg-gradient-to-r from-gray-800 to-gray-700 border-t border-gray-600`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1">
-          <a
-            href="#about"
+          <Link
+            to="/"
             className="block px-3 py-2 text-white hover:text-brand hover:bg-gray-700 rounded-md transition-all duration-300 font-medium"
+            onClick={() => setMenuOpen(false)}
+          >
+            Home
+          </Link>
+          <Link
+            to="/about"
+            className="block px-3 py-2 text-white hover:text-brand hover:bg-gray-700 rounded-md transition-all duration-300 font-medium"
+            onClick={() => setMenuOpen(false)}
           >
             About Us
-          </a>
-          <a
-            href="#contact"
+          </Link>
+
+          <Link
+            to="/contactUs"
             className="block px-3 py-2 text-white hover:text-brand hover:bg-gray-700 rounded-md transition-all duration-300 font-medium"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </div>

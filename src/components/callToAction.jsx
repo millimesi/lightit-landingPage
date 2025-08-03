@@ -128,12 +128,12 @@ const CallToActionSection = () => {
             <p className="text-lg text-[#bbcb2f] font-semibold text-center">
               Together,{" "}
               <span className="text-white">we can create visionaries</span> for
-              our society and future, and{" "}
+              our society and future,{" "}
               <span className="text-white">
-                empower the visionary with skill, mindset, character and
-                opportunities
+                and develop the ecosystem to empower the visionary with skill,
+                mindset, character and opportunities besides and in support of
+                the regular educational system.
               </span>
-              .
             </p>
           </div>
 

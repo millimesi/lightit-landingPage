@@ -6,7 +6,7 @@ import img4 from "../assets/4.png";
 import img5 from "../assets/5.jpg";
 import MainLightitlogo from "../assets/MainLightitlogo.svg";
 
-const HomeSection = () => {
+const HeroSection = () => {
   const slideRef = useRef(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
@@ -27,6 +27,14 @@ const HomeSection = () => {
     const interval = setInterval(handleNext, 9000);
     return () => clearInterval(interval);
   }, [isPaused, currentSlide]);
+
+  // Add ref for ProblemSection scroll
+  const handleLearnMoreClick = () => {
+    const el = document.getElementById("problem-section");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   // Slide data
   const slides = [
@@ -166,10 +174,9 @@ const HomeSection = () => {
           <span
             style={{
               display: "inline-block",
-              background: "linear-gradient(90deg, #bbcb2f 0%, #eaf09b 100%)",
               borderRadius: "2rem",
               padding: "0.5rem 2.5rem",
-              boxShadow: "0 4px 24px 0 #bbcb2f44",
+              boxShadow: "0 4px 24px 0 #fff",
             }}
             className="mb-2"
           >
@@ -180,7 +187,7 @@ const HomeSection = () => {
               style={{
                 maxWidth: "180px",
                 verticalAlign: "middle",
-                filter: "drop-shadow(0 2px 12px #bbcb2f88)",
+                filter: "drop-shadow(0 2px 8px #fff)",
               }}
             />
           </span>
@@ -316,7 +323,7 @@ const HomeSection = () => {
 
       <div
         ref={slideRef}
-        className="relative w-screen h-[95vh] overflow-hidden bg-[#bbcb2f]" // <-- Add brand background here
+        className="relative w-screen h-[95vh] overflow-hidden bg-[#bbcb2f]"
       >
         {slides.map((slide, idx) => (
           <div
@@ -369,15 +376,17 @@ const HomeSection = () => {
                 } animate-slideIn delay-400`}
               >
                 {slide.cta.map((btn, bidx) =>
-                  btn.gradient ? (
+                  btn.text === "Learn More" ? (
                     <button
                       key={bidx}
-                      className="cta-btn group relative px-6 py-3 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-bold rounded-full overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-[#bbcb2f]/30 hover:scale-105 text-sm w-auto min-w-0"
+                      className="cta-btn px-6 py-3 border-2 border-white/30 text-white font-semibold rounded-full hover:bg-white/10 hover:border-[#bbcb2f] transition-all duration-300 text-sm w-auto min-w-0"
                       style={{ width: "auto", minWidth: 0 }}
-                      onClick={(e) => e.stopPropagation()}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleLearnMoreClick();
+                      }}
                     >
-                      <span className="relative z-10">{btn.text}</span>
-                      <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-300" />
+                      {btn.text}
                     </button>
                   ) : (
                     <button
@@ -486,4 +495,4 @@ const HomeSection = () => {
   );
 };
 
-export default HomeSection;
+export default HeroSection;
