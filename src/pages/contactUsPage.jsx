@@ -337,7 +337,7 @@ const ContactForm = () => {
                   <h3 className="text-brand font-semibold text-lg">
                     Call Us / WhatsApp / Telegram
                   </h3>
-                  <p className="text-gray-300">0910120891</p>
+                  <p className="text-gray-300">+251910120891</p>
                   <div className="flex gap-3 mt-2 justify-center">
                     <button
                       onClick={openWhatsApp}
