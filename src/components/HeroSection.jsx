@@ -1,9 +1,9 @@
 import React, { useRef, useEffect, useState } from "react";
-import img from "../assets/1.png";
-import img2 from "../assets/2.png";
-import img3 from "../assets/3.png";
-import img4 from "../assets/4.png";
-import img5 from "../assets/5.jpg";
+import img from "../assets/1.webp";
+import img2 from "../assets/2.webp";
+import img3 from "../assets/3.webp";
+import img4 from "../assets/4.webp";
+import img5 from "../assets/5.webp";
 import MainLightitlogo from "../assets/MainLightitlogo.svg";
 
 const HeroSection = () => {
@@ -27,6 +27,14 @@ const HeroSection = () => {
     const interval = setInterval(handleNext, 9000);
     return () => clearInterval(interval);
   }, [isPaused, currentSlide]);
+
+  // Preload images
+  useEffect(() => {
+    [img, img2, img3, img4, img5].forEach((src) => {
+      const image = new window.Image();
+      image.src = src;
+    });
+  }, []);
 
   // Add ref for ProblemSection scroll
   const handleLearnMoreClick = () => {
@@ -333,7 +341,10 @@ const HeroSection = () => {
             key={idx}
             className={`item absolute w-full h-full top-0 left-0 bg-no-repeat animate-fadeIn`}
             style={{
-              backgroundImage: `linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(187,203,47,0.2) 100%), url(${slide.image})`,
+              backgroundImage:
+                idx === currentSlide
+                  ? `linear-gradient(135deg, rgba(0,0,0,0.4) 0%, rgba(187,203,47,0.2) 100%), url(${slide.image})`
+                  : "none", // or use a tiny blurred image here
               backgroundSize: slide.backgroundSize,
               backgroundPosition: slide.backgroundPosition,
               zIndex: 0,

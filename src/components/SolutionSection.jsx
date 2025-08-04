@@ -1,79 +1,84 @@
-import React, { useState } from "react";
-import mentors from "../assets/mentors.png";
-import challengers from "../assets/challenger.png";
-import events from "../assets/events.png";
-import contents from "../assets/contents.png";
+import React, { useState, useEffect } from "react";
+import mentors from "../assets/mentors.webp";
+import challengers from "../assets/challenger.webp";
+import events from "../assets/events.webp";
+import contents from "../assets/contents.webp";
 import MainLightitlogo from "../assets/MainLightitlogo.svg";
 
 const SolutionSection = () => {
   const [activeService, setActiveService] = useState(null);
+
+  // 1. Preload images on mount
+  useEffect(() => {
+    [mentors, challengers, events, contents].forEach((src) => {
+      const image = new window.Image();
+      image.src = src;
+    });
+  }, []);
 
   const services = [
     {
       id: 1,
       title: "Light it Mentors",
       subtitle: "Personalized Mentorship Platform",
-      icon: "🌱",
       image: mentors,
       description:
-        "A platform of well-trained, holistic mentors dedicated to helping students:",
+        "A platform of well-trained, holistic mentors dedicated to help students:",
       features: [
         "Discover and use their potential",
         "Build character and clarity",
-        "Stay accountable, inspired, and supported",
+        "Stay purposeful, inspired, and supported",
       ],
       highlight:
         "This service bridges the gap between student needs and personalized human guidance.",
     },
     {
       id: 2,
-      title: "The Challenger",
-      subtitle: "Student Media Platform",
-      icon: "🚀",
-      image: challengers,
+      title: "Light it Contents",
+      subtitle: "Empowering and Entertaining Digital Content",
+      image: contents,
       description:
-        "A digital social media-like platform built for students, by intention. Challenger delivers engaging academic and non-academic challenges that are tailored to help students:",
+        "Light it provides rich, age-relevant digital content designed to empower, engage and close educational quality difference gap across schools. Our contents includes:",
       features: [
-        "Entertaining, Engaging, and empowering platform",
-        "Discover their talents and interests",
-        "Activate their inner potential",
+        "Local Curriculum-based lessons and Science experiment videos",
+        "Textbook and exam archives",
+        "Special Story Books, videos, animations and interactive contents",
+        "Educational games (both digital and physical)",
+        "and more resources based on student needs",
       ],
       highlight:
-        "Through structured challenges, students develop skills, character, and mindset. It helps them look inward, unlock their vision, and move toward a purpose-driven life.",
+        "This content is designed to make learning accessible, fun, and inspiring for every student.",
     },
     {
       id: 3,
       title: "Light it Events",
       subtitle: "Community-Driven Learning Experiences",
-      icon: "🎉",
       image: events,
       description:
         "We organize interactive events, both physical and digital, that bring families, students, and educators together. Examples include:",
       features: [
-        "School-opening festivals",
-        "Family workshops",
+        "School-opening festivals, award ceremonies and more",
+        "Family workshops, summer programs, and hackathons",
         "Trainings, seminars, and creative competitions",
       ],
       highlight:
         "These events nurture a culture of growth, support, and joy in education.",
     },
+
     {
       id: 4,
-      title: "Light it Contents",
-      subtitle: "Empowering and Entertaining Digital Content",
-      icon: "📚",
-      image: contents,
+      title: "The Challenger",
+      subtitle: "Student Media Platform",
+      image: challengers,
       description:
-        "Light it provides rich, age-relevant digital content designed to empower and engage. Our content includes:",
+        "A digital social media-like platform built for students, by intention. Challenger delivers engaging academic and non-academic challenges that are tailored to help students:",
       features: [
-        "Science experiment videos",
-        "Textbook and exam archives",
-        "Local Curriculum-based lessons",
-        "Books, videos, animations and interactive contents",
-        "Educational games (both digital and physical)",
+        "Get entertained and engaged while empowered and educated",
+        "Discover their talents and interests",
+        "Activate their inner potential",
       ],
       highlight:
-        "This content is designed to make learning accessible, fun, and inspiring for every student.",
+        "Through structured challenges, students develop skills, character, and mindset. It helps them look inward, unlock their potential, and move toward a purpose-driven life.",
     },
   ];
 
@@ -177,23 +182,31 @@ const SolutionSection = () => {
                     {service.id}
                   </div>
 
-                  {/* Image Section */}
+                  {/* Image Section - 2. Lazy load only visible image, 3. Larger on small screens */}
                   <div className="relative flex items-center justify-center">
-                    <div className="relative w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-92 lg:h-92 rounded-xl shadow-lg group-hover:shadow-[#bbcb2f]/20 transition-all duration-300 bg-white">
+                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-92 lg:h-92 rounded-xl shadow-lg group-hover:shadow-[#bbcb2f]/20 transition-all duration-300 bg-white">
                       <img
                         src={service.image}
                         alt={service.title}
+                        loading={
+                          activeService === service.id ||
+                          window.innerWidth < 640
+                            ? "eager"
+                            : "lazy"
+                        }
                         className="w-full h-full object-contain rounded-xl transform group-hover:scale-105 transition-transform duration-500"
+                        style={{
+                          minWidth: "8rem",
+                          minHeight: "8rem",
+                          maxWidth: "100%",
+                          maxHeight: "100%",
+                        }}
                         onError={(e) => {
                           e.target.src = "";
                           e.target.alt = "Image failed to load";
                           e.target.style.display = "none";
                         }}
                       />
-                      {/* Icon Overlay */}
-                      <div className="absolute top-4 right-4 w-12 h-12 bg-[#bbcb2f]/90 backdrop-blur-sm rounded-full flex items-center justify-center text-xl shadow-md">
-                        {service.icon}
-                      </div>
                     </div>
                   </div>
 
