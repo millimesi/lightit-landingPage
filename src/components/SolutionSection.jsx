@@ -184,7 +184,7 @@ const SolutionSection = () => {
 
                   {/* Image Section - 2. Lazy load only visible image, 3. Larger on small screens */}
                   <div className="relative flex items-center justify-center">
-                    <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-92 lg:h-92 rounded-xl shadow-lg group-hover:shadow-[#bbcb2f]/20 transition-all duration-300 bg-white">
+                    <div className="relative w-64 h-64 sm:w-64 sm:h-64 md:w-70 md:h-70 lg:w-92 lg:h-92 rounded-xl shadow-lg group-hover:shadow-[#bbcb2f]/20 transition-all duration-300 bg-white">
                       <img
                         src={service.image}
                         alt={service.title}
