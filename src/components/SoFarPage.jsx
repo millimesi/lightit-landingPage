@@ -27,6 +27,7 @@ import img9 from "../assets/sofar/9.jpg";
 import img10 from "../assets/sofar/10.jpg";
 import img11 from "../assets/sofar/11.jpg";
 import img12 from "../assets/sofar/12.jpg";
+import img6_2 from "../assets/sofar/6_2.JPG";
 
 // Photos of Children's special story Book
 import bookPhoto1 from "../assets/sofar/bookphoto1.jpg";
@@ -68,6 +69,7 @@ const ProgressSection = () => {
         img4,
         img5,
         img6,
+        img6_2,
         img7,
         img8,
         img9,
@@ -240,7 +242,7 @@ const ProgressSection = () => {
             </div>
             <div className="hidden md:block w-px h-12 bg-gray-600"></div>
             <div className="flex-1 text-center mb-4 md:mb-0">
-              <div className="text-3xl font-bold text-[#bbcb2f]">21</div>
+              <div className="text-3xl font-bold text-[#bbcb2f]">22</div>
               <div className="text-sm text-gray-300">Documentation Photos</div>
             </div>
             <div className="hidden md:block w-px h-12 bg-gray-600"></div>
