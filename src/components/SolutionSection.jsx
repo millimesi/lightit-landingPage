@@ -25,7 +25,7 @@ const SolutionSection = () => {
       description:
         "A platform of well-trained, holistic mentors dedicated to help students:",
       features: [
-        "Discover and use their potential",
+        "Discover and use their potential to excel in Academics and life",
         "Build character and clarity",
         "Stay purposeful, inspired, and supported",
       ],
