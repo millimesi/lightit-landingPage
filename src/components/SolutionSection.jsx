@@ -20,7 +20,7 @@ const SolutionSection = () => {
     {
       id: 1,
       title: "Light it Mentors",
-      subtitle: "Personalized Mentorship Platform",
+      subtitle: "Personal Mentors Platform",
       image: mentors,
       description:
         "A platform of well-trained, holistic mentors dedicated to help students:",
@@ -31,6 +31,7 @@ const SolutionSection = () => {
       ],
       highlight:
         "This service bridges the gap between student needs and personalized human guidance.",
+      visitLink: "https://lightit.app/mentors",
     },
     {
       id: 2,
@@ -48,25 +49,10 @@ const SolutionSection = () => {
       ],
       highlight:
         "This content is designed to make learning accessible, fun, and inspiring for every student.",
+      visitLink: "https://lightit.app/contents",
     },
     {
       id: 3,
-      title: "Light it Events",
-      subtitle: "Community-Driven Learning Experiences",
-      image: events,
-      description:
-        "We organize interactive events, both physical and digital, that bring families, students, and educators together. Examples include:",
-      features: [
-        "School-opening festivals, award ceremonies and more",
-        "Family workshops, summer programs, and hackathons",
-        "Trainings, seminars, and creative competitions",
-      ],
-      highlight:
-        "These events nurture a culture of growth, support, and joy in education.",
-    },
-
-    {
-      id: 4,
       title: "The Challenger",
       subtitle: "Student Media Platform",
       image: challengers,
@@ -79,6 +65,23 @@ const SolutionSection = () => {
       ],
       highlight:
         "Through structured challenges, students develop skills, character, and mindset. It helps them look inward, unlock their potential, and move toward a purpose-driven life.",
+      visitLink: "https://lightit.app/challengers",
+    },
+    {
+      id: 4,
+      title: "Light it Events",
+      subtitle: "Community-Driven Learning Experiences",
+      image: events,
+      description:
+        "We organize interactive events, both physical and digital, that bring families, students, and educators together. Examples include:",
+      features: [
+        "School-opening festivals, award ceremonies and more",
+        "Family workshops, summer programs, and hackathons",
+        "Trainings, seminars, and creative competitions",
+      ],
+      highlight:
+        "These events nurture a culture of growth, support, and joy in education.",
+      visitLink: "https://lightit.app/events",
     },
   ];
 
@@ -144,17 +147,25 @@ const SolutionSection = () => {
 
             <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-6 animate-fadeIn delay-400">
               Light it builds a{" "}
-              <span className="text-brand">comprehensive and interrelated</span>{" "}
-              ecosystem of services and products for kg-12 grade Students. We
-              create a {""} <span className="text-brand">community</span> of
-              Students , Teachers, Mentors, Families, Schools, NGOs and public
-              institutions focused on the growth and development of the next
-              generation.
+              <span className="text-brand">
+                regenerative, comprehensive, and interconnected
+              </span>{" "}
+              ecosystem of services platform for kg-12 grade Students. We bring
+              together a <span className="text-brand">community</span> of
+              students, teachers, mentors, families, schools, NGOs, government
+              bodies, and public institutions to work collaboratively toward a
+              shared goal: developing the next generation into capable
+              visionaries for their society and environment. This ecosystem
+              supports the conventional education system without replacing it,
+              in addressing current educational needs and challenges while
+              reaching millions of students across diverse schools fairly and
+              effectively, also ensuring learning remains relevant, adequate,
+              and aligned with the evolving demands of the modern world.
             </p>
 
             <div className="inline-block px-8 py-4 bg-gradient-to-r from-gray-800/80 to-gray-700/80 backdrop-blur-sm rounded-full border border-[#bbcb2f]/30 animate-fadeIn delay-500">
               <span className="text-[#bbcb2f] font-bold text-lg">
-                The Four Core Services of Light it
+                The Four Core Services platforms of Light it
               </span>
             </div>
           </div>
@@ -249,7 +260,7 @@ const SolutionSection = () => {
                     {/* Action Button */}
                     <div className="pt-2">
                       <a
-                        href="https://lightit.app/"
+                        href={service.visitLink}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="px-6 py-3 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] text-black font-semibold rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-[#bbcb2f]/30 hover:scale-105 inline-block text-center"

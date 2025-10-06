@@ -170,7 +170,8 @@ const ProblemSection = () => {
             <div className="w-24 h-1 bg-gradient-to-r from-[#bbcb2f] to-[#a8b829] mx-auto mb-3 rounded-full animate-scaleIn delay-300" />
 
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed animate-fadeIn delay-400">
-              Understanding the challenges for meaningful solutions.
+              Understanding the challenges for meaningful, sustainable,
+              innovative and dynamic solutions.
             </p>
           </div>
 

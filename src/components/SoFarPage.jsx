@@ -13,6 +13,7 @@ import mentors4 from "../assets/sofar/mentors4.PNG";
 
 // Photos of Pilot Mentoring Service
 import pilotMentoringService from "../assets/sofar/pilotMentoringService.jpg";
+import pilotMentoringServiceSuccess from "../assets/sofar/pilotMentoringServiceSuccess.PNG";
 
 // Photos of School opening Festival Event
 import img1 from "../assets/sofar/1.jpg";
@@ -43,7 +44,7 @@ const ProgressSection = () => {
       id: 1,
       title: "Light it Mentors web System",
       description:
-        "We have successfully developed and launched our Mentors listing, background checking, matching and training system that connects care taker of students with trained mentors.",
+        "We have successfully developed and launched our Mentors platform that list mentors, assist background check, facilitate matching and incorporate mentors training system to connects parents of students with trained mentors.",
       images: [mentors1, mentors2, mentors3, mentors4],
       icon: "🌱",
       stats: "List, Background check, Train and Match",
@@ -52,8 +53,8 @@ const ProgressSection = () => {
       id: 2,
       title: "Pilot Mentoring Service Launch",
       description:
-        "Our pilot mentors service has been successfully implemented, providing trained mentors for personalized guidance to students. This service marks a significant step in our mission.",
-      images: [pilotMentoringService],
+        "Our pilot mentors service has been successfully implemented, providing trained mentors for personalized guidance to students. This service succeeded by helping of our mentee score 523/600 in university entrance national examination marks a significant step in our mission.",
+      images: [pilotMentoringService, pilotMentoringServiceSuccess],
       icon: "🚀",
       stats: "Successfully tested",
     },
